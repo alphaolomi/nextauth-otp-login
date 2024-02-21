@@ -1,1 +1,1 @@
-# Nexjs Otp Input
+# Next.js Otp Input

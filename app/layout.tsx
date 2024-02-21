@@ -1,37 +1,28 @@
-import './globals.css'
-import type { Metadata } from 'next'
-import { Inter as FontSans } from "next/font/google"
-import { Toaster } from "@/components/ui/sonner"
+import "./globals.css"
+import type { Metadata } from "next"
+import { Inter } from "next/font/google"
+import Footer from "@/components/footer"
+import Header from "@/components/header"
 
-import { cn } from "@/lib/utils"
-
-export const fontSans = FontSans({
-  subsets: ["latin"],
-  variable: "--font-sans",
-})
+const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: 'Platform',
-  description: 'Login to the platform',
+  title: "NextAuth.js Example",
+  description:
+    "This is an example site to demonstrate how to use NextAuth.js for authentication",
 }
 
-interface RootLayoutProps {
-  children: React.ReactNode
-}
-
-export default function RootLayout({
-  children,
-}: RootLayoutProps) {
+export default function RootLayout({ children }: React.PropsWithChildren) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body
-        className={cn(
-          "min-h-screen bg-background font-sans antialiased",
-          fontSans.variable
-        )}
-      >
-        <main>{children}</main>
-        <Toaster />
+    <html lang="en">
+      <body className={inter.className}>
+        <div className="flex flex-col justify-between w-full h-full min-h-screen">
+          <Header />
+          <main className="flex-auto w-full max-w-3xl px-4 py-4 mx-auto sm:px-6 md:py-6">
+            {children}
+          </main>
+          <Footer />
+        </div>
       </body>
     </html>
   )
